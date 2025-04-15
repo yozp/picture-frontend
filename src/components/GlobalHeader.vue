@@ -46,9 +46,9 @@ import { HomeOutlined } from '@ant-design/icons-vue'
 import { MenuProps } from 'ant-design-vue'
 import { useLoginUserStore } from '@/stores/useLoginUserStore';
 import { useRouter } from "vue-router";
-const router = useRouter()
+const router = useRouter();
 
-const loginUserStore = useLoginUserStore()
+const loginUserStore = useLoginUserStore();
 
 
 // 当前选中菜单
