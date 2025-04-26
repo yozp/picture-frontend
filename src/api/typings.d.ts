@@ -17,9 +17,39 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponsePagePicture_ = {
+    code?: number
+    data?: PagePicture_
+    message?: string
+  }
+
+  type BaseResponsePagePictureVO_ = {
+    code?: number
+    data?: PagePictureVO_
+    message?: string
+  }
+
   type BaseResponsePageUserVO_ = {
     code?: number
     data?: PageUserVO_
+    message?: string
+  }
+
+  type BaseResponsePicture_ = {
+    code?: number
+    data?: Picture
+    message?: string
+  }
+
+  type BaseResponsePictureTagCategory_ = {
+    code?: number
+    data?: PictureTagCategory
+    message?: string
+  }
+
+  type BaseResponsePictureVO_ = {
+    code?: number
+    data?: PictureVO
     message?: string
   }
 
@@ -31,7 +61,7 @@ declare namespace API {
 
   type BaseResponseUser_ = {
     code?: number
-    data?: User1
+    data?: User
     message?: string
   }
 
@@ -45,16 +75,14 @@ declare namespace API {
     id?: number
   }
 
-  type getLoginUsingGETParams = {
-    /** roleId */
-    roleId: string
-    /** userId */
-    userId: string
+  type getPictureByIdUsingGETParams = {
+    /** id */
+    id?: number
   }
 
-  type getRegExpUsingGETParams = {
-    /** regexp1 */
-    regexp1: string
+  type getPictureVOByIdUsingGETParams = {
+    /** id */
+    id?: number
   }
 
   type getUserByIdUsingGETParams = {
@@ -65,31 +93,6 @@ declare namespace API {
   type getUserVOByIdUsingGETParams = {
     /** id */
     id?: number
-  }
-
-  type helloUsingDELETEParams = {
-    /** name */
-    name?: string
-  }
-
-  type helloUsingGETParams = {
-    /** name */
-    name?: string
-  }
-
-  type helloUsingPATCHParams = {
-    /** name */
-    name?: string
-  }
-
-  type helloUsingPOSTParams = {
-    /** name */
-    name?: string
-  }
-
-  type helloUsingPUTParams = {
-    /** name */
-    name?: string
   }
 
   type LoginUserVO = {
@@ -103,6 +106,22 @@ declare namespace API {
     userRole?: string
   }
 
+  type PagePicture_ = {
+    current?: number
+    pages?: number
+    records?: Picture[]
+    size?: number
+    total?: number
+  }
+
+  type PagePictureVO_ = {
+    current?: number
+    pages?: number
+    records?: PictureVO[]
+    size?: number
+    total?: number
+  }
+
   type PageUserVO_ = {
     current?: number
     pages?: number
@@ -111,37 +130,101 @@ declare namespace API {
     total?: number
   }
 
-  type saveUserUsingDELETEParams = {
-    age?: number
+  type Picture = {
+    category?: string
+    createTime?: string
+    editTime?: string
+    id?: number
+    introduction?: string
+    isDelete?: number
     name?: string
+    picColor?: string
+    picFormat?: string
+    picHeight?: number
+    picScale?: number
+    picSize?: number
+    picWidth?: number
+    reviewMessage?: string
+    reviewStatus?: number
+    reviewTime?: string
+    reviewerId?: number
+    spaceId?: number
+    tags?: string
+    thumbnailUrl?: string
+    updateTime?: string
+    url?: string
+    userId?: number
   }
 
-  type saveUserUsingGETParams = {
-    age?: number
+  type PictureEditRequest = {
+    category?: string
+    id?: number
+    introduction?: string
     name?: string
+    tags?: string[]
   }
 
-  type saveUserUsingPATCHParams = {
-    age?: number
+  type PictureQueryRequest = {
+    category?: string
+    current?: number
+    id?: number
+    introduction?: string
     name?: string
+    pageSize?: number
+    picFormat?: string
+    picHeight?: number
+    picScale?: number
+    picSize?: number
+    picWidth?: number
+    searchText?: string
+    sortField?: string
+    sortOrder?: string
+    tags?: string[]
+    userId?: number
   }
 
-  type saveUserUsingPOSTParams = {
-    age?: number
-    name?: string
+  type PictureTagCategory = {
+    categoryList?: string[]
+    tagList?: string[]
   }
 
-  type saveUserUsingPUTParams = {
-    age?: number
+  type PictureUpdateRequest = {
+    category?: string
+    id?: number
+    introduction?: string
     name?: string
+    tags?: string[]
+  }
+
+  type PictureVO = {
+    category?: string
+    createTime?: string
+    editTime?: string
+    id?: number
+    introduction?: string
+    name?: string
+    picFormat?: string
+    picHeight?: number
+    picScale?: number
+    picSize?: number
+    picWidth?: number
+    tags?: string[]
+    updateTime?: string
+    url?: string
+    user?: UserVO
+    userId?: number
+  }
+
+  type testDownloadFileUsingGETParams = {
+    /** filepath */
+    filepath?: string
+  }
+
+  type uploadPictureUsingPOSTParams = {
+    id?: number
   }
 
   type User = {
-    age?: number
-    name?: string
-  }
-
-  type User1 = {
     createTime?: string
     editTime?: string
     id?: number

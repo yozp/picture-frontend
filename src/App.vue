@@ -3,7 +3,6 @@
   <div id="app">
     <BasicLayout/>
   </div>
-  <RouterView />
 </template>
 
 <script setup lang="ts">
