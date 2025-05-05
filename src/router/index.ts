@@ -7,6 +7,7 @@ import UserManagePage from '@/pages/admin/UserManagePage.vue';
 import AddPicturePage from '@/pages/AddPicturePage.vue';
 import PictureManagePage from '@/pages/admin/PictureManagePage.vue';
 import PictureDetailPage from '@/pages/PictureDetailPage.vue';
+import AddPictureBatchPage from '@/pages/AddPictureBatchPage.vue';
 
 // const routes: Array<RouteRecordRaw> = [
 //   {
@@ -69,6 +70,11 @@ const router = createRouter({
       component:PictureDetailPage,
       props:true //动态路由
     },
+    {  
+      path: '/add_picture/batch',  
+      name: '批量创建图片',  
+      component: AddPictureBatchPage,  
+    },    
   ],
 })
 
