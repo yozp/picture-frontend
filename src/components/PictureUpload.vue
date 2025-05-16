@@ -27,6 +27,7 @@ import { uploadPictureUsingPost } from '@/api/pictureController'
 //该组件为受控组件，由父组件（图片创建页面）来管理
 interface Props {
   picture?: API.PictureVO
+  spaceId?: number
   onSuccess?: (newPicture: API.PictureVO) => void
 }
 
@@ -61,7 +62,8 @@ const handleUpload = async ({ file }: any) => {
   try {
     //调用后端上传图片接口时，如果已经有 pictureId，表示对已上传的图片进行更新，
     //需要将该参数也添加到请求中，否则每次都会新增图片记录
-    const params = props.picture ? { id: props.picture.id } : {}
+    const params: API.PictureUploadRequest = props.picture ? { id: props.picture.id } : {}
+    params.spaceId = props.spaceId;
     const res = await uploadPictureUsingPost(params, {}, file)
     if (res.data.code === 0 && res.data.data) {
       message.success('图片上传成功')

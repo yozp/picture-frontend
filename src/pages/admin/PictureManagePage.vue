@@ -199,6 +199,7 @@ const searchParams = reactive<API.PictureQueryRequest>({
 const fetchData = async () => {
   const res = await listPictureByPageUsingPost({
     ...searchParams,
+    nullSpaceId: true,//只能看到公共图片
   })
   if (res.data.data) {
     dataList.value = res.data.data.records ?? []
