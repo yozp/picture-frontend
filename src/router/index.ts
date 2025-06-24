@@ -13,6 +13,7 @@ import AddSpacePage from '@/pages/AddSpacePage.vue';
 import MySpacePage from '@/pages/MySpacePage.vue';
 import SpaceDetailPage from '@/pages/SpaceDetailPage.vue';
 import SearchPicturePage from '@/pages/SearchPicturePage.vue';
+import SpaceAnalyzePage from '@/pages/SpaceAnalyzePage.vue';
 
 // const routes: Array<RouteRecordRaw> = [
 //   {
@@ -105,6 +106,11 @@ const router = createRouter({
       path: '/search_picture',
       name: '图片搜索',
       component: SearchPicturePage,
+    },
+    {
+      path: '/space_analyze',
+      name: '空间图库分析',
+      component: SpaceAnalyzePage,
     }   
   ],
 })
