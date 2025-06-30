@@ -2,7 +2,9 @@
 
 <template>
   <div id="addSpacePage">
-    <h2 style="margin-bottom: 16px">创建空间</h2>
+    <h2 style="margin-bottom: 16px">
+      {{ route.query?.id ? '修改' : '创建' }}{{ SPACE_TYPE_MAP[spaceType] }}
+    </h2>
 
     <!-- 表单项 -->
     <a-form layout="vertical" :model="formData" @finish="handleSubmit">
@@ -42,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, computed } from 'vue'
 import { message } from 'ant-design-vue'
 import { useRouter, useRoute } from 'vue-router'
 import {
@@ -51,7 +53,7 @@ import {
   getSpaceVoByIdUsingGet,
   updateSpaceUsingPost,
 } from '@/api/spaceController'
-import { SPACE_LEVEL_ENUM, SPACE_LEVEL_MAP, SPACE_LEVEL_OPTIONS } from '@/constants/space'
+import { SPACE_LEVEL_ENUM, SPACE_LEVEL_MAP, SPACE_LEVEL_OPTIONS, SPACE_TYPE_ENUM, SPACE_TYPE_MAP } from '@/constants/space'
 import { formatSize } from '@/utils'
 
 //定义表单项结构
@@ -64,6 +66,14 @@ const loading = ref(false)
 
 //定义路由
 const router = useRouter()
+
+// 空间类别
+const spaceType = computed(() => {
+  if (route.query?.type) {
+    return Number(route.query.type)
+  }
+  return SPACE_TYPE_ENUM.PRIVATE
+})
 
 /**
  * 提交函数
@@ -83,6 +93,7 @@ const handleSubmit = async (values: any) => {
     // 创建
     res = await addSpaceUsingPost({
       ...formData,
+      spaceType: spaceType.value,
     })
   }
   if (res.data.code === 0 && res.data.data) {

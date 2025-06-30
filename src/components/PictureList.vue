@@ -35,8 +35,8 @@
             <template v-if="showOp" #actions>
               <search-outlined @click="(e) => doSearch(picture, e)" />
               <share-alt-outlined @click="(e) => doShare(picture, e)" />
-              <edit-outlined @click="(e) => doEdit(picture, e)" />
-              <delete-outlined @click="(e) => doDelete(picture, e)" />
+              <edit-outlined v-if="canEdit" @click="(e) => doEdit(picture, e)" />
+              <delete-outlined v-if="canDelete" @click="(e) => doDelete(picture, e)" />
             </template>
           </a-card>
         </a-list-item>
@@ -65,6 +65,8 @@ interface Props {
   loading?: boolean
   showOp?: boolean
   onReload?: () => void //reload 重新触发数据的加载
+  canEdit?: boolean
+  canDelete?: boolean
 }
 
 // 定义 props 默认值
@@ -72,6 +74,8 @@ const props = withDefaults(defineProps<Props>(), {
   dataList: () => [],
   loading: false,
   showOp: false,
+  canEdit: false,
+  canDelete: false,
 })
 
 // 跳转至图片详情
