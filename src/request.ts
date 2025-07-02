@@ -12,7 +12,7 @@ const PROD_BASE_URL = "http://yunikon-picture.user-center-yzj.top";
 // 创建 Axios 实例 
 // 如果不写这个 withCredentials 前端就不会携带 cookie ，会出现前端已经登录但是后端不认的情况
 const myAxios = axios.create({
-  baseURL: DEV_BASE_URL,
+  baseURL: PROD_BASE_URL,
   timeout: 60000,
   withCredentials: true, 
 })
